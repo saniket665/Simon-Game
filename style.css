@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    width: 100%;
+    background: rgb(10, 10, 10);
+    position: relative;
+}
+h1 {
+    font-size: 3.8rem;
+    text-align: center;
+    padding-top: 0.6rem;
+    font-family: 'Oleo Script Swash Caps', 'cursive';
+    color: blue;
+}
+.btn-container {
+    height: 24rem;
+    width: 28rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1.2rem;
+    margin-top: 3%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.btn {
+    border: 4px solid white;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.btn-red {
+    background: red;
+}
+.btn-green {
+    background: green;
+}
+.btn-blue {
+    background: blue;
+}
+.btn-grey {
+    background: grey;
+}
+.btn-pink {
+    background: pink;
+}
+.btn-violet {
+    background: violet;
+}
+.btn-orange { 
+    background: orange;
+}
+.btn-purple {
+    background: purple;
+}
+.btn-skyblue {
+    background: #06c7fc;
+}
+.animate {
+    animation: fade-in-out 0.6s;
+}
+.click {
+    animation: click 0.2s;
+}
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes click {
+    0% {
+        background: white;
+    }
+    50% {
+        box-shadow: 0 0 5px 10px white;
+
+    }
+    100% {
+        box-shadow: none;
+    }
+}
+@media screen and (max-width: 1080px) {
+    h1 {
+        font-size: 2.8rem;
+        padding-left: 0.6rem;
+        padding-right: 0.6rem;
+    }
+    .btn-container {
+        width: 22rem;
+        height: 20rem;
+    }
+}
+@media screen and (max-width: 450px) {
+    .btn-container {
+        width: 90%;
+        height: 20rem;
+    }
+}
+@media screen and (max-width: 316px) {
+    h1 {
+        font-size: 2.4rem;
+    }
+    .btn-container {
+        width: 90%;
+        gap: 0.8rem;
+        height: 16rem; 
+    }
+}
