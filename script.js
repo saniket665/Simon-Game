@@ -1,5 +1,6 @@
 const btns = document.querySelectorAll(".btn");
 const title = document.querySelector("#title");
+const audio = document.querySelector("#audio");
 const colors = ["red", "green", "blue", "grey", "pink", "violet", "orange", "purple", "skyblue"]
 let started = false;
 let sequence = [];
@@ -47,7 +48,6 @@ function removeAnimation(randomNumber) {
     }
 }
 function playSound(check) {
-    let audio = document.createElement("audio");
     if(check == "clicked") {
         audio.setAttribute("src", "/Sounds/blue.mp3");
     }
