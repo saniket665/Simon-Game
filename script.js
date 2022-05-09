@@ -6,14 +6,6 @@ let started = false;
 let sequence = [];
 let level = 1;
 let userClickedPattern = [];
-window.addEventListener("keypress", (e) => {
-    if(!started) {
-        if(e.key == 'Enter') {
-            started = true;
-            nextSequence();
-        }
-    }
-})
 function removeClickAnimation() {
     for(let i = 0; i < btns.length; i++) {
         btns[i].classList.remove("click");
@@ -22,23 +14,35 @@ function removeClickAnimation() {
 let i = 0;
 btns.forEach(function(btn, index) {
     btn.addEventListener("click", (e) => {
-        btn.classList.add("click");
-        playSound("clicked");
-        userClickedPattern.push(colors[index]);
-        if(JSON.stringify(userClickedPattern) === JSON.stringify(sequence)) {
-            level++;
-            setTimeout(nextSequence, 1000)
+        if(!started) {
+            let tar = e.target;
+            if(tar.classList.contains("btn-red")) {
+                tar.classList.add("click");
+                playSound("Start");
+                started = true;
+                setTimeout(removeClickAnimation, 100);
+                setTimeout(nextSequence, 1500)
+            }
         }
         else {
-            if(userClickedPattern[i] == sequence[i]) {
-                i++;
+            btn.classList.add("click");
+            playSound("clicked");
+            userClickedPattern.push(colors[index]);
+            if(userClickedPattern[i] === sequence[i]) {
+                if(userClickedPattern.length === sequence.length) {
+                    level++;
+                    setTimeout(nextSequence, 1000);
+                }
+                else {
+                    i++;
+                }
             }
             else {
-                title.innerHTML = "Game Over, Press Enter to Restart";
+                title.innerHTML = "Game Over, Click on Red Button to Restart";
                 gameOver();
             }
+            setTimeout(removeClickAnimation, 100)
         }
-        setTimeout(removeClickAnimation, 100)
     })
 })
 function removeAnimation(randomNumber) {
@@ -48,8 +52,11 @@ function removeAnimation(randomNumber) {
     }
 }
 function playSound(check) {
-    if(check == "clicked") {
-        audio.setAttribute("src", "Sounds/blue.mp3");
+    if(check == "Start") {
+        audio.setAttribute("src", "Sounds/start.wav");
+    }
+    else if(check == "clicked") {
+    audio.setAttribute("src", "Sounds/blue.mp3");
     }
     else if(check == "gameOver") {
         audio.setAttribute("src", "Sounds/wrong.mp3");
