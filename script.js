@@ -49,13 +49,13 @@ function removeAnimation(randomNumber) {
 function playSound(check) {
     let audio = document.createElement("audio");
     if(check == "clicked") {
-        audio.src = "/Sounds/grey.mp3";
+        audio.setAttribute("src", "/Sounds/blue.mp3");
     }
     else if(check == "gameOver") {
-        audio.src = "/Sounds/wrong.mp3";
+        audio.setAttribute("src", "/Sounds/wrong.mp3");
     }
     else {
-        audio.src = "/Sounds/blue.mp3";
+        audio.setAttribute("src", "/Sounds/grey.mp3");
     }
     audio.play();
 }
